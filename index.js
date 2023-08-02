@@ -1,7 +1,12 @@
-export default function unicornFun(input, {postfix = 'rainbows'} = {}) {
-	if (typeof input !== 'string') {
-		throw new TypeError(`Expected a string, got ${typeof input}`);
-	}
+import {isAxiosError} from 'axios';
 
-	return `${input} & ${postfix}`;
+/**
+*
+* @param {import('axios').AxiosError} error
+* @param {number} code
+*
+* @returns {boolean}
+*/
+export function isErrorCodeEqual(error, code) {
+	return isAxiosError(error) && error?.response?.data.error.code === code;
 }

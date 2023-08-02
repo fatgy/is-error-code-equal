@@ -1,13 +1,43 @@
 import test from 'ava';
-import unicornFun from './index.js';
+import {AxiosError} from 'axios';
+import {isErrorCodeEqual} from './index.js';
 
-test('main', t => {
-	t.throws(() => {
-		unicornFun(123);
-	}, {
-		instanceOf: TypeError,
-		message: 'Expected a string, got number',
-	});
+test('return true when match error code', t => {
+	const request = {path: '/foo'};
+	const response = {
+		status: 401,
+		data: {
+			status: {
+				code: 401,
+				message: 'Not process entity',
+			},
+			error: {
+				code: 10_000,
+				message: 'Not process entity',
+			},
+		},
+	};
+	const error = new AxiosError('Not process entity', 'ESOMTHING', {foo: 'bar'}, request, response);
 
-	t.is(unicornFun('unicorns'), 'unicorns & rainbows');
+	t.true(isErrorCodeEqual(error, 10_000));
+});
+
+test('return false when match error code', t => {
+	const request = {path: '/foo'};
+	const response = {
+		status: 401,
+		data: {
+			status: {
+				code: 401,
+				message: 'Not process entity',
+			},
+			error: {
+				code: 10_000,
+				message: 'Not process entity',
+			},
+		},
+	};
+	const error = new AxiosError('Not process entity', 'ESOMTHING', {foo: 'bar'}, request, response);
+
+	t.false(isErrorCodeEqual(error, 10_001));
 });
