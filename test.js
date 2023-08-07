@@ -41,3 +41,9 @@ test('return false when match error code', t => {
 
 	t.false(isErrorCodeEqual(error, 10_001));
 });
+
+test('return false when error is not AxiosError', t => {
+	const error = new Error('Custom error');
+
+	t.false(isErrorCodeEqual(error, 10_000));
+});

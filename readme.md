@@ -1,65 +1,49 @@
-# node-module-boilerplate
+# is-error-code-equal
 
-> Boilerplate to kickstart creating a Node.js module
-
-This is what I use for [my own modules](https://www.npmjs.com/~sindresorhus).
-
-Also check out [`node-cli-boilerplate`](https://github.com/sindresorhus/node-cli-boilerplate).
-
-## Getting started
-
-**Click the "Use this template" button.**
-
-Alternatively, create a new directory and then run:
-
-```sh
-curl -fsSL https://github.com/sindresorhus/node-module-boilerplate/archive/main.tar.gz | tar -xz --strip-components=1
-```
-
-There's also a [Yeoman generator](https://github.com/sindresorhus/generator-nm).
-
----
-
-**Remove everything from here and above**
-
----
-
-# unicorn-fun
-
-> My awesome module
+> Check error code from api.
 
 ## Install
 
 ```sh
-npm install unicorn-fun
+npm install @fatgy/is-error-code-equal
 ```
 
 ## Usage
 
-```js
-import unicornFun from 'unicorn-fun';
+ex. api response
+```json
+{
+	status: {
+		code: 401,
+		message: 'Can not process entity'
+	},
+	error: {
+		code: 10000,
+		message: 'Can not process entity',
+		errors: []
+	}
+}
 
-unicornFun('unicorns');
-//=> 'unicorns & rainbows'
+```
+
+```js
+import {isErrorCodeEqual} from '@fatgy/is-error-code-equal';
+
+isErrorCodeEqual(error, 10000);
+//=> true
+
+isErrorCodeEqual(error, 10001);
+//=> false
 ```
 
 ## API
 
-### unicornFun(input, options?)
+### isErrorCodeEqual(error, code)
 
-#### input
+#### error
 
-Type: `string`
+Type: `AxiosError`
 
-Lorem ipsum.
+#### code
 
-#### options
-
-Type: `object`
-
-##### postfix
-
-Type: `string`\
-Default: `'rainbows'`
-
-Lorem ipsum.
+Type: `number`
