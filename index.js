@@ -8,5 +8,5 @@ import {isAxiosError} from 'axios';
 * @returns {boolean}
 */
 export function isErrorCodeEqual(error, code) {
-	return isAxiosError(error) && error?.response?.data.error.code === code;
+	return isAxiosError(error) && error?.response?.data?.error?.code === code;
 }
