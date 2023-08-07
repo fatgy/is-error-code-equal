@@ -13,17 +13,16 @@ npm install @fatgy/is-error-code-equal
 ex. api response
 ```json
 {
-	status: {
-		code: 401,
-		message: 'Can not process entity'
+	"status": {
+		"code": 401,
+		"message": "Can not process entity"
 	},
-	error: {
-		code: 10000,
-		message: 'Can not process entity',
-		errors: []
+	"error": {
+		"code": 10000,
+		"message": "Can not process entity",
+		"errors": []
 	}
 }
-
 ```
 
 ```js
