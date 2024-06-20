@@ -1,6 +1,6 @@
 {
   "name": "@fatgy/is-error-code-equal",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Check error code from axios error response",
   "license": "MIT",
   "repository": {
