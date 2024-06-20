@@ -3,7 +3,10 @@
   "version": "2.0.2",
   "description": "Check error code from axios error response",
   "license": "MIT",
-  "repository": "fatgy/is-error-code-equal",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fatgy/is-error-code-equal.git"
+  },
   "author": {
     "name": "Shatmongkol Amaraveja",
     "email": "fatgygy@gmail.com"
